@@ -1,24 +1,30 @@
-import java.util.ArrayList;
+// Luis Felipe 10420572 
+// Marcos Minhano 10428577
+// Matheus Fernandes 10420439
+import java.util.List;
 
 public class Carrinho {
-    private ArrayList<ItemCompra> listaItens;
+    private List<ItemCompra> listaItens;
     private double totalCompra;
     private double porcDesconto;
-    private double valorPago;
+    private double valorPagar;
     
-    public Carrinho(ArrayList<ItemCompra> listaItens, double totalCompra, double porcDesconto, double valorPago) {
+    public Carrinho(List<ItemCompra> listaItens, double porcDesconto) {
         this.listaItens = listaItens;
-        this.totalCompra = totalCompra;
         this.porcDesconto = porcDesconto;
-        this.valorPago = valorPago;
     }
 
-    public ArrayList<ItemCompra> getListaItens() {
+    public List<ItemCompra> getListaItens() {
         return listaItens;
     }
-    public void setListaItens(ArrayList<ItemCompra> listaItens) {
+    public void setListaItens(List<ItemCompra> listaItens) {
         this.listaItens = listaItens;
     }
+
+    public void adicionarItens(ItemCompra itemCompra){
+        listaItens.add(itemCompra);
+    }
+
     public double getTotalCompra() {
         return totalCompra;
     }
@@ -31,14 +37,40 @@ public class Carrinho {
     public void setPorcDesconto(double porcDesconto) {
         this.porcDesconto = porcDesconto;
     }
-    public double getValorPago() {
-        return valorPago;
+    public double getValorPagar() {
+        return valorPagar;
     }
-    public void setValorPago(double valorPago) {
-        this.valorPago = valorPago;
+    public void setValorPagar(double valorPagar) {
+        this.valorPagar = valorPagar;
     }
 
-    public void mostrarCarrinho(){}
-    public void calDesconto(double total){}
-    public void somaValores(){}
+    public void mostrarCarrinho(){
+        int contadora = 1;
+        for (ItemCompra item : listaItens){
+            System.out.print(contadora + " - ");
+            item.mostrarItem();
+            System.out.println();
+            contadora++;
+        }
+        double subTotal = somaValores();
+        double descontos = calDesconto(subTotal);
+        System.out.printf("Subtotal = R$ %.2f\n", subTotal);
+        System.out.printf("Descontos = R$ -%.2f\n", descontos);
+        System.out.printf("Total = R$ %.2f\n", totalCompra);
+    }
+
+
+    private double calDesconto(double total){
+        double desconto = (total * porcDesconto/100);
+        this.totalCompra = total - desconto;
+        return desconto;
+    }
+
+    private double somaValores(){
+        double subTotal = 0;
+        for (ItemCompra itemCompra : listaItens){
+            subTotal += itemCompra.calcSubTotal();
+        }
+        return subTotal;
+    }
 }

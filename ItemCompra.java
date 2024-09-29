@@ -1,3 +1,7 @@
+// Luis Felipe 10420572 
+// Marcos Minhano 10428577
+// Matheus Fernandes 10420439
+
 public class ItemCompra{
   private String descricao;
   private int qtd;
@@ -31,6 +35,14 @@ public class ItemCompra{
 
   @Override
   public String toString() {
-    return "ItemCompra [descricao=" + descricao + ", qtd=" + qtd + ", preco=" + preco + "]";
+      return String.format(String.format("Item: [descricao = %s | preco = R$%.2f | quantidade = %d | subtotal = R$%.2f]", descricao, preco, qtd, calcSubTotal()));
+  }
+
+  public double calcSubTotal(){
+    return preco*qtd;
+  }
+
+  public void mostrarItem(){
+    System.out.print(String.format("Item: [descricao = %s | preco = R$%.2f | quantidade = %d | subtotal = R$%.2f]", descricao, preco, qtd, calcSubTotal()));
   }
 }

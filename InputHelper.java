@@ -5,19 +5,18 @@
 import java.util.Scanner;
 
 public class InputHelper {
-    public static int getIntInput(String message) {
+    public static int getIntInput(String message, Scanner sc) {
         int input = 0;
         boolean valid = false;
         
         do {
             System.out.print(message);
             try {
-                Scanner sc = new Scanner(System.in);
                 input = sc.nextInt();
                 valid = true;
-                sc.close();
             } catch (Exception e) {
                 System.out.println("Insira um inteiro válido.");
+                sc.next();
             }
         } while (!valid);
         return input;

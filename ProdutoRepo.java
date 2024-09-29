@@ -7,13 +7,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class ProdutoRepo {
     private List<Produto> produtos;
 
     public ProdutoRepo() {
-        this.produtos = lerProdutos("src/main/java/produtos.txt");
+        this.produtos = lerProdutos("produtos.txt");
     }
 
     public List<Produto> getProdutos() {
@@ -37,27 +36,5 @@ public class ProdutoRepo {
             e.printStackTrace();
         }
         return produtos;
-    }
-
-    public void buscaProduto() {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Digite o código: ");
-        String codigoString = sc.next();
-        Integer codigo = Integer.parseInt(codigoString);
-
-        for (Produto p : this.produtos) {
-            if (codigo == p.getCodigo()) {
-                System.out.println(p);
-                int quantidade = InputHelper.getIntInput("Insira a quantidade: ");
-                ItemCompra ic = new ItemCompra(p.getDescricao(), quantidade, p.getPreco() * quantidade);
-                System.out.println("Item adicionado com sucesso!");
-                System.out.println(ic);
-                sc.close();
-                return;
-            }
-        }
-
-        System.out.println("Não foi encontrado nenhum produto.");
-        sc.close();
     }
 }
