@@ -45,6 +45,7 @@ public class Carrinho {
     }
 
     public void mostrarCarrinho(){
+        System.out.println("----- CARRINHO -----");
         int contadora = 1;
         for (ItemCompra item : listaItens){
             System.out.print(contadora + " - ");
@@ -57,6 +58,7 @@ public class Carrinho {
         System.out.printf("Subtotal = R$ %.2f\n", subTotal);
         System.out.printf("Descontos = R$ -%.2f\n", descontos);
         System.out.printf("Total = R$ %.2f\n", totalCompra);
+        System.out.println("--------------------");
     }
 
 

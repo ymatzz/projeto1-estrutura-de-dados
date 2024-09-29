@@ -35,6 +35,7 @@ public class Main {
       int codigo = InputHelper.getIntInput("Digite o código: ", sc);
       if (codigo == 99999) {
         System.out.println("Finalizando inserção de itens no carrinho...");
+        System.out.println();
         break;
       }
 
