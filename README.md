@@ -1,1 +1,5 @@
 # projeto1-estrutura-de-dados
+
+Luis Felipe 1042 
+Marcos Minhano 10428577
+Matheus Fernandes 10420439
